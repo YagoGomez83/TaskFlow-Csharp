@@ -46,8 +46,6 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
             entity.Property(e => e.Role)
                 .HasConversion<string>();
-
-            entity.HasIndex(e => e.Email);
         });
 
         // Configuración de TaskItem
