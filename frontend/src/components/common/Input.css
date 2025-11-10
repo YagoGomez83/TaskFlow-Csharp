@@ -1,0 +1,241 @@
+/**
+ * Input Component Styles
+ *
+ * EXPLICACIÓN DE LA ESTRUCTURA:
+ *
+ * Estructura del componente:
+ * .input (wrapper)
+ *   ├── .input__label (label)
+ *   ├── .input__field (input)
+ *   └── .input__helper (helper text o error)
+ *
+ * ESTADOS:
+ * - Normal: Borde gris suave
+ * - Focus: Borde azul con outline
+ * - Error: Borde rojo
+ * - Disabled: Opacity reducida
+ */
+
+/* ============================================================================
+   INPUT WRAPPER
+   ============================================================================ */
+
+/**
+ * Contenedor del input group completo.
+ *
+ * EXPLICACIÓN:
+ * - display: flex con flex-direction: column para apilar verticalmente
+ * - gap → Espacio consistente entre label, input y helper text
+ */
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/**
+ * Full width modifier.
+ */
+.input--full-width {
+  width: 100%;
+}
+
+/* ============================================================================
+   LABEL STYLES
+   ============================================================================ */
+
+/**
+ * Label del input.
+ *
+ * EXPLICACIÓN:
+ * - font-weight: 500 → Medium weight para destacar
+ * - color: gris oscuro para legibilidad
+ * - font-size ligeramente más pequeño que el input
+ */
+.input__label {
+  display: block;
+  font-size: 0.875rem; /* 14px */
+  font-weight: 500;
+  color: var(--color-gray-700);
+  line-height: 1.5;
+}
+
+/**
+ * Required indicator (*).
+ *
+ * EXPLICACIÓN:
+ * - color: rojo para indicar campo obligatorio
+ * - margin-left: pequeño espacio después del label
+ */
+.input__required {
+  color: var(--color-error);
+  margin-left: 0.25rem;
+}
+
+/* ============================================================================
+   INPUT FIELD STYLES
+   ============================================================================ */
+
+/**
+ * Estilos base del input field.
+ *
+ * EXPLICACIÓN:
+ * - width: 100% → Ocupa todo el ancho disponible
+ * - padding generoso para facilitar tap en móvil
+ * - border sólido con color gris suave
+ * - border-radius para esquinas redondeadas
+ * - transition → Animar cambios de borde al focus
+ * - font-family: inherit → Usar fuente del body
+ */
+.input__field {
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* 8px 12px */
+  font-size: 1rem; /* 16px */
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--color-gray-900);
+  background-color: white;
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  outline: none;
+}
+
+/**
+ * Placeholder styles.
+ *
+ * EXPLICACIÓN:
+ * - Color gris suave para indicar que es placeholder
+ * - No debe competir con el texto real
+ */
+.input__field::placeholder {
+  color: var(--color-gray-400);
+}
+
+/**
+ * Focus state.
+ *
+ * EXPLICACIÓN:
+ * - border-color: azul primario al hacer focus
+ * - box-shadow: ring azul alrededor del input (mejor UX)
+ * - 0 0 0 3px → Shadow sin offset que actúa como ring
+ */
+.input__field:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/**
+ * Hover state (solo si no está disabled).
+ *
+ * EXPLICACIÓN:
+ * - border-color ligeramente más oscuro al hover
+ * - Feedback visual sutil
+ */
+.input__field:hover:not(:disabled) {
+  border-color: var(--color-gray-400);
+}
+
+/**
+ * Disabled state.
+ *
+ * EXPLICACIÓN:
+ * - Background gris claro
+ * - Cursor not-allowed
+ * - Opacity reducida
+ */
+.input__field:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/**
+ * Error state.
+ *
+ * EXPLICACIÓN:
+ * - border-color: rojo para indicar error
+ * - Focus ring también rojo
+ */
+.input__field--error {
+  border-color: var(--color-error);
+}
+
+.input__field--error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px var(--color-error-light);
+}
+
+/**
+ * Full width modifier.
+ */
+.input__field--full-width {
+  width: 100%;
+}
+
+/* ============================================================================
+   HELPER TEXT STYLES
+   ============================================================================ */
+
+/**
+ * Helper text (o error message).
+ *
+ * EXPLICACIÓN:
+ * - font-size pequeño
+ * - Color gris para helper text normal
+ * - Color rojo cuando es error
+ */
+.input__helper {
+  font-size: 0.875rem; /* 14px */
+  color: var(--color-gray-600);
+  line-height: 1.4;
+}
+
+/**
+ * Error message.
+ *
+ * EXPLICACIÓN:
+ * - Color rojo para destacar error
+ * - Usuario debe notar inmediatamente el problema
+ */
+.input__helper--error {
+  color: var(--color-error);
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+
+/**
+ * Mobile adjustments.
+ *
+ * EXPLICACIÓN:
+ * - min-height asegura área de toque suficiente en móvil
+ * - 44px es la recomendación de Apple para touch targets
+ */
+@media (max-width: 768px) {
+  .input__field {
+    min-height: 44px;
+  }
+}
+
+/* ============================================================================
+   AUTOFILL STYLES
+   ============================================================================ */
+
+/**
+ * Override autofill styles del navegador.
+ *
+ * EXPLICACIÓN:
+ * - Navegadores aplican background amarillo al autocompletar
+ * - Esto puede romper el diseño
+ * - box-shadow hack para sobrescribir el fondo
+ * - -webkit-text-fill-color para mantener color del texto
+ */
+.input__field:-webkit-autofill,
+.input__field:-webkit-autofill:hover,
+.input__field:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset;
+  box-shadow: 0 0 0 1000px white inset;
+  -webkit-text-fill-color: var(--color-gray-900);
+}

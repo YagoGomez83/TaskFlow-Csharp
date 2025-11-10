@@ -1,0 +1,228 @@
+/**
+ * Alert Component Styles
+ *
+ * EXPLICACIÓN DE ALERTS:
+ *
+ * Los Alerts usan color coding para comunicar el tipo de mensaje:
+ * - Success: Verde (operación exitosa)
+ * - Error: Rojo (error crítico)
+ * - Warning: Amarillo/Naranja (advertencia)
+ * - Info: Azul (información)
+ *
+ * ESTRUCTURA:
+ * .alert
+ *   ├── .alert__icon
+ *   ├── .alert__content
+ *   │   ├── .alert__title
+ *   │   └── .alert__message
+ *   └── .alert__close
+ */
+
+/* ============================================================================
+   BASE ALERT STYLES
+   ============================================================================ */
+
+/**
+ * Estilos base del alert.
+ *
+ * EXPLICACIÓN:
+ * - display: flex → Layout horizontal (icon | content | close)
+ * - align-items: flex-start → Alinear al top (mejor para mensajes largos)
+ * - gap → Espacio entre icon, content y close button
+ * - padding generoso para legibilidad
+ * - border-radius para esquinas suaves
+ * - border-left grueso para reforzar el color
+ */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ============================================================================
+   VARIANT STYLES
+   ============================================================================ */
+
+/**
+ * Success variant (verde).
+ *
+ * EXPLICACIÓN:
+ * - Background verde claro
+ * - Texto verde oscuro
+ * - Border verde para reforzar
+ */
+.alert--success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+  border-left-color: var(--color-success);
+}
+
+/**
+ * Error variant (rojo).
+ *
+ * EXPLICACIÓN:
+ * - Background rojo claro
+ * - Texto rojo oscuro
+ * - Border rojo para destacar urgencia
+ */
+.alert--error {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+  border-left-color: var(--color-error);
+}
+
+/**
+ * Warning variant (amarillo/naranja).
+ *
+ * EXPLICACIÓN:
+ * - Background amarillo claro
+ * - Texto naranja oscuro
+ * - Border naranja para advertencia
+ */
+.alert--warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+  border-left-color: var(--color-warning);
+}
+
+/**
+ * Info variant (azul).
+ *
+ * EXPLICACIÓN:
+ * - Background azul claro
+ * - Texto azul oscuro
+ * - Border azul para información
+ */
+.alert--info {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+  border-left-color: var(--color-info);
+}
+
+/* ============================================================================
+   ELEMENT STYLES
+   ============================================================================ */
+
+/**
+ * Icon container.
+ *
+ * EXPLICACIÓN:
+ * - flex-shrink: 0 → Previene que el icon se comprima
+ * - font-size grande para visibilidad
+ * - line-height: 1 → Centrar emoji verticalmente
+ */
+.alert__icon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/**
+ * Content container (title + message).
+ *
+ * EXPLICACIÓN:
+ * - flex: 1 → Ocupa todo el espacio disponible
+ * - min-width: 0 → Permite que el texto haga word wrap
+ */
+.alert__content {
+  flex: 1;
+  min-width: 0;
+}
+
+/**
+ * Alert title (opcional).
+ *
+ * EXPLICACIÓN:
+ * - font-weight: bold para destacar
+ * - margin-bottom pequeño para separar del mensaje
+ * - color: inherit → Usar color del variant
+ */
+.alert__title {
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: inherit;
+}
+
+/**
+ * Alert message.
+ *
+ * EXPLICACIÓN:
+ * - color ligeramente más oscuro que el background
+ * - Para success/info/warning, hacemos el texto más legible
+ */
+.alert__message {
+  color: currentColor;
+}
+
+/* Ajustar color del texto para mejor legibilidad */
+.alert--success .alert__message {
+  color: #047857; /* Verde más oscuro */
+}
+
+.alert--error .alert__message {
+  color: #b91c1c; /* Rojo más oscuro */
+}
+
+.alert--warning .alert__message {
+  color: #c2410c; /* Naranja más oscuro */
+}
+
+.alert--info .alert__message {
+  color: #1e40af; /* Azul más oscuro */
+}
+
+/**
+ * Close button.
+ *
+ * EXPLICACIÓN:
+ * - flex-shrink: 0 → No se comprime
+ * - background: transparent → Sin fondo
+ * - border: none → Sin borde
+ * - cursor: pointer → Indica interactividad
+ * - padding pequeño para área de click
+ * - transition para hover effect
+ */
+.alert__close {
+  flex-shrink: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.7;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.alert__close:hover {
+  opacity: 1;
+}
+
+.alert__close:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+
+/**
+ * Mobile adjustments.
+ *
+ * EXPLICACIÓN:
+ * - En móvil, reducir padding para maximizar espacio
+ */
+@media (max-width: 768px) {
+  .alert {
+    padding: var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+}

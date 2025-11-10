@@ -1,0 +1,320 @@
+/**
+ * Button Component Styles
+ *
+ * EXPLICACIÓN DE LA ESTRUCTURA CSS:
+ *
+ * Este archivo usa BEM (Block Element Modifier) naming convention:
+ * - Block: .button (el componente base)
+ * - Element: .button__spinner (elemento dentro del button)
+ * - Modifier: .button--primary (variación del button)
+ *
+ * VENTAJAS DE BEM:
+ * ✅ Nombres específicos previenen colisiones de CSS
+ * ✅ Fácil de entender la jerarquía
+ * ✅ Reutilizable y mantenible
+ *
+ * ESTRUCTURA:
+ * 1. Base button styles (común a todos los botones)
+ * 2. Variant modifiers (primary, secondary, danger, ghost)
+ * 3. Size modifiers (sm, md, lg)
+ * 4. State modifiers (loading, full-width)
+ * 5. Element styles (spinner, text)
+ */
+
+/* ============================================================================
+   BASE BUTTON STYLES
+   ============================================================================ */
+
+/**
+ * Estilos base del botón.
+ *
+ * EXPLICACIÓN:
+ * - display: inline-flex → Permite usar flexbox para centrar contenido
+ * - align-items y justify-content → Centrar contenido vertical y horizontalmente
+ * - gap → Espacio entre spinner y texto
+ * - border: none → Remover borde por defecto del navegador
+ * - cursor: pointer → Mostrar manita al hover
+ * - transition → Animar cambios de color suavemente
+ * - font-family: inherit → Usar la fuente del body
+ * - font-weight: 500 → Medium weight para mejor legibilidad
+ * - user-select: none → Prevenir selección de texto al hacer click
+ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/**
+ * Disabled state.
+ *
+ * EXPLICACIÓN:
+ * - opacity: 0.6 → Hacer el botón más transparente
+ * - cursor: not-allowed → Mostrar cursor de "no permitido"
+ * - pointer-events: none → Deshabilitar eventos de mouse/touch
+ *
+ * :disabled es el estado nativo del HTML cuando disabled={true}
+ */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/**
+ * Focus visible state (para accesibilidad).
+ *
+ * EXPLICACIÓN:
+ * - :focus-visible solo se activa al navegar con teclado (Tab)
+ * - No se activa al hacer click con mouse (mejor UX)
+ * - outline → Borde visible para usuarios de teclado
+ * - outline-offset → Separación entre el botón y el outline
+ */
+.button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================================================
+   VARIANT MODIFIERS
+   ============================================================================ */
+
+/**
+ * Primary variant (acción principal).
+ *
+ * EXPLICACIÓN:
+ * - Fondo azul vibrante (--color-primary)
+ * - Texto blanco para contraste
+ * - Hover: Fondo más oscuro
+ * - Active: Escala ligeramente más pequeña (feedback visual)
+ */
+.button--primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.button--primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.button--primary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/**
+ * Secondary variant (acción secundaria).
+ *
+ * EXPLICACIÓN:
+ * - Fondo gris claro
+ * - Texto gris oscuro
+ * - Borde para definir límites
+ */
+.button--secondary {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-700);
+  border: 1px solid var(--color-gray-300);
+}
+
+.button--secondary:hover:not(:disabled) {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-400);
+}
+
+.button--secondary:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/**
+ * Danger variant (acción destructiva: eliminar, cancelar).
+ *
+ * EXPLICACIÓN:
+ * - Fondo rojo para indicar peligro
+ * - Texto blanco
+ * - Usuario debe pensar dos veces antes de hacer click
+ */
+.button--danger {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.button--danger:hover:not(:disabled) {
+  background-color: #dc2626; /* Rojo más oscuro */
+}
+
+.button--danger:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/**
+ * Ghost variant (sin fondo, solo texto).
+ *
+ * EXPLICACIÓN:
+ * - background-color: transparent → Sin fondo
+ * - Solo texto con color primario
+ * - Hover: Fondo sutil aparece
+ * - Útil para acciones terciarias o links que parecen botones
+ */
+.button--ghost {
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.button--ghost:hover:not(:disabled) {
+  background-color: var(--color-primary-light);
+}
+
+.button--ghost:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* ============================================================================
+   SIZE MODIFIERS
+   ============================================================================ */
+
+/**
+ * Small size.
+ *
+ * EXPLICACIÓN:
+ * - Padding más pequeño
+ * - Font size reducido
+ * - Útil para botones en espacios reducidos (tablas, cards compactas)
+ */
+.button--sm {
+  padding: 0.375rem 0.75rem; /* 6px 12px */
+  font-size: 0.875rem; /* 14px */
+}
+
+/**
+ * Medium size (default).
+ *
+ * EXPLICACIÓN:
+ * - Tamaño estándar para la mayoría de casos
+ * - Balance entre espacio y legibilidad
+ */
+.button--md {
+  padding: 0.5rem 1rem; /* 8px 16px */
+  font-size: 1rem; /* 16px */
+}
+
+/**
+ * Large size.
+ *
+ * EXPLICACIÓN:
+ * - Padding generoso
+ * - Font size grande
+ * - Útil para CTAs (Call-To-Action) importantes
+ * - Ej: "Sign Up", "Get Started", "Buy Now"
+ */
+.button--lg {
+  padding: 0.75rem 1.5rem; /* 12px 24px */
+  font-size: 1.125rem; /* 18px */
+}
+
+/* ============================================================================
+   STATE MODIFIERS
+   ============================================================================ */
+
+/**
+ * Full width modifier.
+ *
+ * EXPLICACIÓN:
+ * - width: 100% → Ocupa todo el ancho del contenedor padre
+ * - Útil para botones en forms móviles
+ * - Ej: Botón "Submit" al final de un formulario
+ */
+.button--full-width {
+  width: 100%;
+}
+
+/**
+ * Loading state.
+ *
+ * EXPLICACIÓN:
+ * - Posición relativa para posicionar el spinner
+ * - Mantiene dimensiones del botón durante loading (no salta la UI)
+ */
+.button--loading {
+  position: relative;
+}
+
+/* ============================================================================
+   ELEMENT STYLES
+   ============================================================================ */
+
+/**
+ * Spinner element (emoji animado).
+ *
+ * EXPLICACIÓN:
+ * - display: inline-block → Necesario para aplicar transform
+ * - animation: spin → Rotar continuamente
+ * - aria-hidden="true" → Screenreaders ignoran el emoji
+ */
+.button__spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+/**
+ * Text during loading.
+ *
+ * EXPLICACIÓN:
+ * - opacity: 0.7 → Hacer texto ligeramente transparente durante loading
+ * - Indica visualmente que la acción está en progreso
+ */
+.button__text--loading {
+  opacity: 0.7;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+/**
+ * Spin animation para el spinner.
+ *
+ * EXPLICACIÓN:
+ * - @keyframes define una animación
+ * - from (0%) → rotate(0deg) → Sin rotación
+ * - to (100%) → rotate(360deg) → Una vuelta completa
+ * - animation: spin 1s linear infinite → Aplicar animación
+ *   - 1s → Duración de una vuelta
+ *   - linear → Velocidad constante
+ *   - infinite → Repetir indefinidamente
+ */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+
+/**
+ * Mobile adjustments (opcional).
+ *
+ * EXPLICACIÓN:
+ * - En móvil, los botones pueden ser más grandes para facilitar tap
+ * - min-height asegura área de toque suficiente (44px es recomendación de Apple)
+ */
+@media (max-width: 768px) {
+  .button {
+    min-height: 44px;
+  }
+}

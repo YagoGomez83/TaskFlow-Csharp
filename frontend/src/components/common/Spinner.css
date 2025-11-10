@@ -1,0 +1,268 @@
+/**
+ * Spinner Component Styles
+ *
+ * EXPLICACIÓN DE SPINNERS:
+ *
+ * Los spinners son indicadores de loading que usan animaciones CSS.
+ * El efecto de "spinning" se logra con:
+ * 1. Un elemento circular con border
+ * 2. Border-top de color diferente
+ * 3. Animación rotate 360 grados
+ *
+ * ESTRUCTURA:
+ * - .spinner-overlay (opcional, full page)
+ *   └── .spinner-container
+ *       ├── .spinner (el círculo que gira)
+ *       └── .spinner__label (texto opcional)
+ */
+
+/* ============================================================================
+   SPINNER OVERLAY (full page loading)
+   ============================================================================ */
+
+/**
+ * Overlay que cubre toda la pantalla.
+ *
+ * EXPLICACIÓN:
+ * - position: fixed → Fijo en viewport (no scroll)
+ * - inset: 0 → Top, right, bottom, left = 0 (cubre todo)
+ * - background: negro semi-transparente (backdrop)
+ * - z-index: 9999 → Sobre todo el contenido
+ * - display: flex → Para centrar el spinner
+ */
+.spinner-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+/* ============================================================================
+   SPINNER CONTAINER
+   ============================================================================ */
+
+/**
+ * Contenedor del spinner y label.
+ *
+ * EXPLICACIÓN:
+ * - display: flex con flex-direction: column → Stack vertical
+ * - align-items: center → Centrar horizontalmente
+ * - gap → Espacio entre spinner y label
+ */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+/* ============================================================================
+   SPINNER (el círculo que gira)
+   ============================================================================ */
+
+/**
+ * Estilos base del spinner.
+ *
+ * EXPLICACIÓN:
+ * - border circular (border-radius: 50%)
+ * - border gris claro en todos los lados
+ * - border-top del color primario (esto crea el efecto visual)
+ * - animation: spin → Rotar continuamente
+ */
+.spinner {
+  border-radius: 50%;
+  border-style: solid;
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================================================
+   SIZE MODIFIERS
+   ============================================================================ */
+
+/**
+ * Small size (16px).
+ *
+ * EXPLICACIÓN:
+ * - Útil para botones, inline text
+ * - Border más delgado (2px)
+ */
+.spinner--sm {
+  width: 1rem; /* 16px */
+  height: 1rem; /* 16px */
+  border-width: 2px;
+}
+
+/**
+ * Medium size (32px) - default.
+ *
+ * EXPLICACIÓN:
+ * - Uso general
+ * - Balance entre visibilidad y espacio
+ */
+.spinner--md {
+  width: 2rem; /* 32px */
+  height: 2rem; /* 32px */
+  border-width: 3px;
+}
+
+/**
+ * Large size (48px).
+ *
+ * EXPLICACIÓN:
+ * - Para full page loading
+ * - Más visible desde lejos
+ */
+.spinner--lg {
+  width: 3rem; /* 48px */
+  height: 3rem; /* 48px */
+  border-width: 4px;
+}
+
+/**
+ * Extra large size (64px).
+ *
+ * EXPLICACIÓN:
+ * - Para splash screens
+ * - Muy visible
+ */
+.spinner--xl {
+  width: 4rem; /* 64px */
+  height: 4rem; /* 64px */
+  border-width: 5px;
+}
+
+/* ============================================================================
+   COLOR MODIFIERS
+   ============================================================================ */
+
+/**
+ * Primary color (azul).
+ *
+ * EXPLICACIÓN:
+ * - Border gris claro en 3 lados
+ * - Border-top azul primario (esto crea el efecto de carga)
+ */
+.spinner--primary {
+  border-color: var(--color-gray-200);
+  border-top-color: var(--color-primary);
+}
+
+/**
+ * White color.
+ *
+ * EXPLICACIÓN:
+ * - Útil para fondos oscuros
+ * - Border gris oscuro transparente en 3 lados
+ * - Border-top blanco
+ */
+.spinner--white {
+  border-color: rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+}
+
+/**
+ * Gray color.
+ *
+ * EXPLICACIÓN:
+ * - Útil para contenido secundario
+ * - Menos prominente que primary
+ */
+.spinner--gray {
+  border-color: var(--color-gray-100);
+  border-top-color: var(--color-gray-400);
+}
+
+/* ============================================================================
+   LABEL STYLES
+   ============================================================================ */
+
+/**
+ * Label debajo del spinner.
+ *
+ * EXPLICACIÓN:
+ * - font-size pequeño
+ * - Color gris
+ * - text-align: center
+ */
+.spinner__label {
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+  text-align: center;
+}
+
+/**
+ * Label dentro de overlay (texto blanco).
+ *
+ * EXPLICACIÓN:
+ * - Cuando está en overlay con fondo oscuro,
+ * - El texto debe ser blanco para contraste
+ */
+.spinner-overlay .spinner__label {
+  color: white;
+}
+
+/* ============================================================================
+   ANIMATIONS
+   ============================================================================ */
+
+/**
+ * Spin animation.
+ *
+ * EXPLICACIÓN:
+ * - @keyframes define la animación
+ * - from (0%) → rotate(0deg) → Sin rotación
+ * - to (100%) → rotate(360deg) → Una vuelta completa
+ * - animation: spin 1s linear infinite
+ *   - 1s → Duración de una vuelta
+ *   - linear → Velocidad constante (no ease)
+ *   - infinite → Repetir indefinidamente
+ *
+ * NOTA: Esta animación es la misma que en Button.css
+ * Considerar moverla a un archivo compartido de animaciones.
+ */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+
+/**
+ * Reduced motion preference.
+ *
+ * EXPLICACIÓN:
+ * - Usuarios con preferencia "reduced motion"
+ * - Deshabilitar animación para prevenir mareos/náusea
+ * - animation: none → Sin animación
+ * - opacity pulsando en su lugar (más sutil)
+ */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+    opacity: 0.7;
+  }
+
+  /* Alternativa: pulsar opacity en vez de rotar */
+  .spinner {
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}

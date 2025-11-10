@@ -1,0 +1,257 @@
+/**
+ * Card Component Styles
+ *
+ * EXPLICACIÓN DE CARDS:
+ *
+ * Los Cards son contenedores visuales que "elevan" contenido del fondo.
+ * La elevación se comunica mediante shadows (box-shadow).
+ *
+ * PRINCIPIOS DE DISEÑO:
+ * - Flat: Sin shadow, solo border (Material Design flat style)
+ * - Elevated: Shadow suave (uso general)
+ * - Floating: Shadow pronunciado (modals, importantes)
+ *
+ * ESTRUCTURA:
+ * .card
+ *   ├── .card__header
+ *   ├── .card__body
+ *   └── .card__footer
+ */
+
+/* ============================================================================
+   BASE CARD STYLES
+   ============================================================================ */
+
+/**
+ * Estilos base del card.
+ *
+ * EXPLICACIÓN:
+ * - background-color: blanco para contrastar con fondo gris de la app
+ * - border-radius: esquinas suaves
+ * - overflow: hidden → clip contenido a border-radius
+ * - transition → animar cambios de shadow y transform al hover
+ */
+.card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* ============================================================================
+   VARIANT MODIFIERS
+   ============================================================================ */
+
+/**
+ * Flat variant (sin shadow, solo border).
+ *
+ * EXPLICACIÓN:
+ * - Sin shadow (plano contra el fondo)
+ * - Border sutil para definir límites
+ * - Útil para estilos minimalistas
+ */
+.card--flat {
+  border: 1px solid var(--color-gray-200);
+  box-shadow: none;
+}
+
+/**
+ * Elevated variant (shadow suave).
+ *
+ * EXPLICACIÓN:
+ * - Shadow suave para elevar ligeramente del fondo
+ * - Uso general (default)
+ */
+.card--elevated {
+  box-shadow: var(--shadow-sm);
+}
+
+/**
+ * Floating variant (shadow pronunciado).
+ *
+ * EXPLICACIÓN:
+ * - Shadow más grande para mayor elevación
+ * - Útil para elementos importantes o modals
+ */
+.card--floating {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================================================
+   PADDING MODIFIERS
+   ============================================================================ */
+
+/**
+ * No padding.
+ *
+ * EXPLICACIÓN:
+ * - Útil para cards con imágenes full-width
+ * - Contenido debe manejar su propio padding
+ */
+.card--padding-none .card__body {
+  padding: 0;
+}
+
+.card--padding-none .card__header {
+  padding: 0;
+}
+
+.card--padding-none .card__footer {
+  padding: 0;
+}
+
+/**
+ * Small padding.
+ */
+.card--padding-sm .card__body {
+  padding: var(--spacing-sm);
+}
+
+.card--padding-sm .card__header {
+  padding: var(--spacing-sm);
+}
+
+.card--padding-sm .card__footer {
+  padding: var(--spacing-sm);
+}
+
+/**
+ * Medium padding (default).
+ */
+.card--padding-md .card__body {
+  padding: var(--spacing-md);
+}
+
+.card--padding-md .card__header {
+  padding: var(--spacing-md);
+}
+
+.card--padding-md .card__footer {
+  padding: var(--spacing-md);
+}
+
+/**
+ * Large padding.
+ */
+.card--padding-lg .card__body {
+  padding: var(--spacing-lg);
+}
+
+.card--padding-lg .card__header {
+  padding: var(--spacing-lg);
+}
+
+.card--padding-lg .card__footer {
+  padding: var(--spacing-lg);
+}
+
+/* ============================================================================
+   INTERACTIVE STATES
+   ============================================================================ */
+
+/**
+ * Hoverable modifier (efecto hover).
+ *
+ * EXPLICACIÓN:
+ * - Shadow más pronunciado al hover
+ * - Transform scale ligeramente más grande
+ * - Indica que es interactivo
+ */
+.card--hoverable:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/**
+ * Clickable modifier (cursor pointer).
+ *
+ * EXPLICACIÓN:
+ * - Cursor pointer indica que es clickeable
+ * - Focus visible para accesibilidad con teclado
+ */
+.card--clickable {
+  cursor: pointer;
+}
+
+.card--clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/**
+ * Active state (al hacer click).
+ *
+ * EXPLICACIÓN:
+ * - Scale ligeramente más pequeño
+ * - Feedback visual inmediato
+ */
+.card--clickable:active {
+  transform: scale(0.98);
+}
+
+/* ============================================================================
+   SECTION STYLES
+   ============================================================================ */
+
+/**
+ * Card header.
+ *
+ * EXPLICACIÓN:
+ * - Border bottom para separar del body
+ * - Padding propio (override por modifiers)
+ * - Background ligeramente gris (opcional)
+ */
+.card__header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+/**
+ * Card body (contenido principal).
+ *
+ * EXPLICACIÓN:
+ * - Padding por defecto (override por modifiers)
+ * - Contenido principal del card
+ */
+.card__body {
+  padding: var(--spacing-md);
+}
+
+/**
+ * Card footer.
+ *
+ * EXPLICACIÓN:
+ * - Border top para separar del body
+ * - Típicamente: metadata, acciones secundarias
+ * - Background gris como header
+ */
+.card__footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-gray-200);
+  background-color: var(--color-gray-50);
+}
+
+/* ============================================================================
+   RESPONSIVE STYLES
+   ============================================================================ */
+
+/**
+ * Mobile adjustments.
+ *
+ * EXPLICACIÓN:
+ * - En móvil, reducir padding para maximizar espacio
+ */
+@media (max-width: 768px) {
+  .card--padding-md .card__body,
+  .card--padding-md .card__header,
+  .card--padding-md .card__footer {
+    padding: var(--spacing-sm);
+  }
+
+  .card--padding-lg .card__body,
+  .card--padding-lg .card__header,
+  .card--padding-lg .card__footer {
+    padding: var(--spacing-md);
+  }
+}
