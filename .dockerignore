@@ -1,0 +1,153 @@
+# .dockerignore - Exclude files from Docker build context
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+azure-pipelines.yml
+
+# Documentation
+README.md
+docs/
+*.md
+LICENSE
+
+# Docker files
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# IDE
+.vscode/
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build artifacts
+**/bin/
+**/obj/
+**/out/
+**/publish/
+
+# Test results
+**/TestResults/
+**/*.trx
+**/*.coverage
+**/*.coveragexml
+
+# NuGet
+**/packages/
+*.nupkg
+*.snupkg
+
+# User secrets (NEVER include in Docker images)
+**/appsettings.Development.json
+**/appsettings.*.json
+!**/appsettings.json
+**/*.user
+**/secrets.json
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Node modules (if frontend is separate)
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
+
+# Logs
+**/logs/
+**/*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Temporary files
+**/tmp/
+**/temp/
+**/*.tmp
+
+# Database files
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Certificates (should be mounted as volumes, not in image)
+**/*.pfx
+**/*.p12
+**/*.key
+**/*.pem
+
+# Coverage reports
+**/coverage/
+**/*.lcov
+
+# Backup files
+**/*.bak
+**/*.backup
+
+# IDE specific
+**/.ionide/
+**/.history/
+
+# Sonar
+.sonarqube/
+.sonar/
+
+# Scripts (may contain sensitive data)
+**/scripts/*.sh
+!**/scripts/docker-entrypoint.sh
+
+# Exclude test projects from production images
+**/tests/
+**/*.Tests/
+**/*.IntegrationTests/
+**/*.UnitTests/
+
+# Development tools
+**/tools/
+
+# Package files
+**/*.nupkg
+
+# Rider
+**/.idea/
+
+# Local configuration
+**/local.settings.json
+
+# Azure Functions
+.python_packages/
+__pycache__/
+.venv/
+
+# Terraform
+**/*.tfstate
+**/*.tfstate.*
+**/.terraform/
+
+# Kubernetes
+**/*.kubeconfig
+
+# Build scripts
+build.sh
+build.cmd
+build.ps1
+
+# Docker ignore optimization
+# Include only what's needed for build
+!src/
+!*.csproj
+!*.sln
