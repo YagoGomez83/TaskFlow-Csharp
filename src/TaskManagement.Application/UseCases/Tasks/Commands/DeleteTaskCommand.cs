@@ -12,4 +12,12 @@ public class DeleteTaskCommand : IRequest<Result>
     /// ID de la tarea a eliminar.
     /// </summary>
     public Guid TaskId { get; set; }
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public DeleteTaskCommand(Guid taskId)
+    {
+        TaskId = taskId;
+    }
 }

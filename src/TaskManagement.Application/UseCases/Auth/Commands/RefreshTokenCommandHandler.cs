@@ -37,13 +37,13 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, R
 
         if (refreshToken == null)
         {
-            return Result.Failure<AuthResponse>("Invalid refresh token");
+            return Result<AuthResponse>.Failure("Invalid refresh token");
         }
 
         // 2. Validar estado del token
         if (!refreshToken.IsValid())
         {
-            return Result.Failure<AuthResponse>("Refresh token is not valid or has expired");
+            return Result<AuthResponse>.Failure("Refresh token is not valid or has expired");
         }
 
         // 3. DETECTAR REUSO (Token Rotation Security)
@@ -56,7 +56,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, R
             // Revocar toda la familia de tokens
             await RevokeTokenFamily(refreshToken, cancellationToken);
 
-            return Result.Failure<AuthResponse>(
+            return Result<AuthResponse>.Failure(
                 "Refresh token has been revoked due to suspicious activity. Please log in again.");
         }
 
@@ -64,7 +64,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, R
         var user = await _context.Users.FindAsync(new object[] { refreshToken.UserId }, cancellationToken);
         if (user == null)
         {
-            return Result.Failure<AuthResponse>("User not found");
+            return Result<AuthResponse>.Failure("User not found");
         }
 
         // 5. Marcar token actual como usado (Token Rotation)
@@ -86,7 +86,7 @@ public class RefreshTokenCommandHandler : IRequestHandler<RefreshTokenCommand, R
         await _context.SaveChangesAsync(cancellationToken);
 
         // 8. Retornar nuevos tokens
-        return Result.Success(new AuthResponse
+        return Result<AuthResponse>.Success(new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = newRefreshTokenValue,

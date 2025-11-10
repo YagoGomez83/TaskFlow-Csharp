@@ -55,7 +55,7 @@ public class GetTasksQueryHandler : IRequestHandler<GetTasksQuery, Result<Pagina
             .ProjectTo<TaskDto>(_mapper.ConfigurationProvider)
             .PaginatedListAsync(request.Page, request.PageSize);
 
-        return Result.Success(paginatedList);
+        return Result<PaginatedList<TaskDto>>.Success(paginatedList);
     }
 }
 

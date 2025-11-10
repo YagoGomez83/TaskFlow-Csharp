@@ -1,9 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Application.DTOs.Auth;
-using TaskManagement.Application.UseCases.Auth.Commands.Login;
-using TaskManagement.Application.UseCases.Auth.Commands.RefreshToken;
-using TaskManagement.Application.UseCases.Auth.Commands.Register;
+using TaskManagement.Application.UseCases.Auth.Commands;
 
 namespace TaskManagement.API.Controllers;
 

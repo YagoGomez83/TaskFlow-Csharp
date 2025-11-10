@@ -30,4 +30,15 @@ public class GetTasksQuery : IRequest<Result<PaginatedList<TaskDto>>>
     /// Filtro opcional por prioridad.
     /// </summary>
     public TaskPriority? Priority { get; set; }
+
+    /// <summary>
+    /// Constructor para crear query desde controller.
+    /// </summary>
+    public GetTasksQuery(int page, int pageSize, TaskStatus? status, TaskPriority? priority)
+    {
+        Page = page;
+        PageSize = pageSize;
+        Status = status;
+        Priority = priority;
+    }
 }

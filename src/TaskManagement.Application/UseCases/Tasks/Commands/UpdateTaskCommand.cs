@@ -40,4 +40,17 @@ public class UpdateTaskCommand : IRequest<Result<TaskDto>>
     /// Estado actualizado.
     /// </summary>
     public TaskStatus Status { get; set; }
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public UpdateTaskCommand(Guid taskId, string title, string? description, DateTime? dueDate, TaskPriority priority, TaskStatus status)
+    {
+        TaskId = taskId;
+        Title = title;
+        Description = description;
+        DueDate = dueDate;
+        Priority = priority;
+        Status = status;
+    }
 }

@@ -29,4 +29,15 @@ public class CreateTaskCommand : IRequest<Result<TaskDto>>
     /// Prioridad de la tarea.
     /// </summary>
     public TaskPriority Priority { get; set; } = TaskPriority.Medium;
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public CreateTaskCommand(string title, string? description, DateTime? dueDate, TaskPriority priority)
+    {
+        Title = title;
+        Description = description;
+        DueDate = dueDate;
+        Priority = priority;
+    }
 }

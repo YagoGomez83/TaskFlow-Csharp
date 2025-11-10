@@ -385,7 +385,7 @@ public static class DependencyInjection
                     // Útil para debugging
                     if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
                     {
-                        context.Response.Headers.Append("Token-Expired", "true");
+                        context.Response.Headers["Token-Expired"] = "true";
                     }
                     return Task.CompletedTask;
                 },

@@ -48,6 +48,6 @@ public class CreateTaskCommandHandler : IRequestHandler<CreateTaskCommand, Resul
 
         // 4. Mapear a DTO y retornar
         var dto = _mapper.Map<TaskDto>(task);
-        return Result.Success(dto);
+        return Result<TaskDto>.Success(dto);
     }
 }

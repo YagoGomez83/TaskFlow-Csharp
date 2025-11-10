@@ -35,13 +35,13 @@ public class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand, Resul
 
         if (task == null)
         {
-            return Result.Failure<TaskDto>("Task not found");
+            return Result<TaskDto>.Failure("Task not found");
         }
 
         // 2. Validar ownership (solo dueño o Admin puede actualizar)
         if (task.UserId != _currentUser.UserId && !_currentUser.IsInRole("Admin"))
         {
-            return Result.Failure<TaskDto>("You don't have permission to update this task");
+            return Result<TaskDto>.Failure("You don't have permission to update this task");
         }
 
         // 3. Actualizar campos
@@ -56,6 +56,6 @@ public class UpdateTaskCommandHandler : IRequestHandler<UpdateTaskCommand, Resul
 
         // 5. Retornar tarea actualizada
         var dto = _mapper.Map<TaskDto>(task);
-        return Result.Success(dto);
+        return Result<TaskDto>.Success(dto);
     }
 }

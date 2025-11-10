@@ -395,12 +395,12 @@ public class CacheService : ICacheService
     }
 
     /// <summary>
-    /// Establece un valor en el caché con expiración opcional.
+    /// Establece un valor en el caché con expiración.
     /// </summary>
     /// <typeparam name="T">Tipo del objeto a serializar.</typeparam>
     /// <param name="key">Clave del caché.</param>
     /// <param name="value">Objeto a cachear.</param>
-    /// <param name="expiration">Tiempo de expiración (null = sin expiración).</param>
+    /// <param name="expiration">Tiempo de expiración.</param>
     /// <remarks>
     /// IMPORTANTE: Siempre establecer expiración para evitar memory leak.
     ///
@@ -419,14 +419,14 @@ public class CacheService : ICacheService
     /// - Redis se queda sin memoria (eviction)
     /// - Restart de Redis
     /// </remarks>
-    public async Task SetAsync<T>(string key, T value, TimeSpan? expiration = null) where T : class
+    public async Task SetAsync<T>(string key, T value, TimeSpan expiration) where T : class
     {
         try
         {
             // Serializar objeto a JSON
             var json = JsonSerializer.Serialize(value);
 
-            // SET key value con expiración opcional
+            // SET key value con expiración
             await _database.StringSetAsync(key, json, expiration);
         }
         catch

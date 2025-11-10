@@ -39,7 +39,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResp
         // 2. Si no existe, retornar error genérico (no revelar si email existe)
         if (user == null)
         {
-            return Result.Failure<AuthResponse>("Invalid credentials");
+            return Result<AuthResponse>.Failure("Invalid credentials");
         }
 
         // 3. Verificar contraseña
@@ -49,13 +49,13 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResp
             user.RecordFailedLogin();
             await _context.SaveChangesAsync(cancellationToken);
 
-            return Result.Failure<AuthResponse>("Invalid credentials");
+            return Result<AuthResponse>.Failure("Invalid credentials");
         }
 
         // 4. Verificar si cuenta está bloqueada
         if (!user.CanLogin())
         {
-            return Result.Failure<AuthResponse>(
+            return Result<AuthResponse>.Failure(
                 $"Account is locked due to multiple failed login attempts. Try again after {user.LockedOutUntil:yyyy-MM-dd HH:mm:ss} UTC");
         }
 
@@ -77,7 +77,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResp
         await _context.SaveChangesAsync(cancellationToken);
 
         // 8. Retornar tokens
-        return Result.Success(new AuthResponse
+        return Result<AuthResponse>.Success(new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshTokenValue,

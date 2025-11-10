@@ -13,4 +13,12 @@ public class RefreshTokenCommand : IRequest<Result<AuthResponse>>
     /// Refresh token para obtener nuevo access token.
     /// </summary>
     public string RefreshToken { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public RefreshTokenCommand(string refreshToken)
+    {
+        RefreshToken = refreshToken;
+    }
 }

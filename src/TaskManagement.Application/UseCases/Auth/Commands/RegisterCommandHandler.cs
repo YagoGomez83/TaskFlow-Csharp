@@ -55,7 +55,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, Result<Au
         await _context.SaveChangesAsync(cancellationToken);
 
         // 4. Retornar tokens (usuario ya logueado)
-        return Result.Success(new AuthResponse
+        return Result<AuthResponse>.Success(new AuthResponse
         {
             AccessToken = accessToken,
             RefreshToken = refreshTokenValue,

@@ -115,4 +115,13 @@ public class LoginCommand : IRequest<Result<AuthResponse>>
     /// Contraseña en texto plano.
     /// </summary>
     public string Password { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public LoginCommand(string email, string password)
+    {
+        Email = email;
+        Password = password;
+    }
 }

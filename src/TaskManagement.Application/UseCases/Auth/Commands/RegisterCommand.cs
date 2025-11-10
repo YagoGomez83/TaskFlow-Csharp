@@ -23,4 +23,14 @@ public class RegisterCommand : IRequest<Result<AuthResponse>>
     /// Confirmación de contraseña.
     /// </summary>
     public string ConfirmPassword { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Constructor para crear comando desde controller.
+    /// </summary>
+    public RegisterCommand(string email, string password, string confirmPassword)
+    {
+        Email = email;
+        Password = password;
+        ConfirmPassword = confirmPassword;
+    }
 }

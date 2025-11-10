@@ -3,12 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TaskManagement.Application.Common.Models;
 using TaskManagement.Application.DTOs.Tasks;
-using TaskManagement.Application.UseCases.Tasks.Commands.CreateTask;
-using TaskManagement.Application.UseCases.Tasks.Commands.DeleteTask;
-using TaskManagement.Application.UseCases.Tasks.Commands.UpdateTask;
-using TaskManagement.Application.UseCases.Tasks.Queries.GetTaskById;
-using TaskManagement.Application.UseCases.Tasks.Queries.GetTasks;
+using TaskManagement.Application.UseCases.Tasks.Commands;
+using TaskManagement.Application.UseCases.Tasks.Queries;
 using TaskManagement.Domain.Enums;
+using TaskStatus = TaskManagement.Domain.Enums.TaskStatus;
 
 namespace TaskManagement.API.Controllers;
 

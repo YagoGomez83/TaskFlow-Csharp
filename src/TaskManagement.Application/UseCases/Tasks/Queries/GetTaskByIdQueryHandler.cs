@@ -36,17 +36,17 @@ public class GetTaskByIdQueryHandler : IRequestHandler<GetTaskByIdQuery, Result<
         // 2. Validar existencia
         if (task == null || task.IsDeleted)
         {
-            return Result.Failure<TaskDto>("Task not found");
+            return Result<TaskDto>.Failure("Task not found");
         }
 
         // 3. Validar ownership (solo owner o Admin puede ver)
         if (task.UserId != _currentUser.UserId && !_currentUser.IsInRole("Admin"))
         {
-            return Result.Failure<TaskDto>("You don't have permission to view this task");
+            return Result<TaskDto>.Failure("You don't have permission to view this task");
         }
 
         // 4. Mapear a DTO y retornar
         var dto = _mapper.Map<TaskDto>(task);
-        return Result.Success(dto);
+        return Result<TaskDto>.Success(dto);
     }
 }
