@@ -44,8 +44,6 @@ import type {
   UpdateTaskRequest,
   PaginatedList,
   TaskQueryParams,
-  TaskStatus,
-  TaskPriority,
 } from '../types';
 
 // ============================================================================

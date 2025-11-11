@@ -20,7 +20,8 @@
  * 6. Si refreshToken también expiró → Redirect a login
  */
 
-import axios, { AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError } from 'axios';
+import type { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 import type { AuthResponse, ApiError } from '../types';
 
 // ============================================================================
@@ -31,14 +32,14 @@ import type { AuthResponse, ApiError } from '../types';
  * URL base del API backend.
  *
  * EXPLICACIÓN:
- * - Development: http://localhost:5000 (puerto del backend .NET)
+ * - Development: http://localhost:5074 (puerto del backend .NET)
  * - Production: Variable de entorno VITE_API_URL
  * - Vite expone variables que empiezan con VITE_ al bundle
  *
  * Configurar en .env:
  * VITE_API_URL=https://api.taskflow.com
  */
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5074';
 
 /**
  * Instancia de Axios configurada para el API.

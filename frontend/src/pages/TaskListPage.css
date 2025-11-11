@@ -1,0 +1,146 @@
+/**
+ * TaskListPage Styles
+ *
+ * EXPLICACIÓN:
+ * - Layout con header y filtros
+ * - Filter buttons con estado active
+ * - Responsive design
+ */
+
+/* ============================================================================
+   Page Container
+   ============================================================================ */
+
+.task-list-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.task-list-page__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.task-list-page__title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.task-list-page__subtitle {
+  margin: 0.5rem 0 0 0;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* ============================================================================
+   Filters
+   ============================================================================ */
+
+.task-list-page__filters {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-list-page__filter-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.task-list-page__filter-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  min-width: 80px;
+}
+
+.task-list-page__filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.task-list-page__filter-button {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background-color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.task-list-page__filter-button:hover {
+  border-color: #3b82f6;
+  color: #3b82f6;
+}
+
+.task-list-page__filter-button--active {
+  border-color: #3b82f6;
+  background-color: #3b82f6;
+  color: white;
+}
+
+.task-list-page__filter-button--active:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .task-list-page__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-list-page__title {
+    font-size: 1.5rem;
+  }
+
+  .task-list-page__filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-list-page__filter-label {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .task-list-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .task-list-page__filters {
+    padding: 1rem;
+  }
+
+  .task-list-page__filter-button {
+    font-size: 0.75rem;
+    padding: 0.375rem 0.75rem;
+  }
+}

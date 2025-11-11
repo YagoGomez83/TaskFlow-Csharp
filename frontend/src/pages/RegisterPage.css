@@ -1,0 +1,109 @@
+/**
+ * RegisterPage Styles
+ *
+ * EXPLICACIÓN:
+ * - Similar a LoginPage
+ * - Mismo layout centrado
+ * - Mismo gradient background
+ */
+
+/* ============================================================================
+   Page Container
+   ============================================================================ */
+
+.register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+}
+
+.register-page__container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.register-page__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.register-page__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-page__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================================
+   Form
+   ============================================================================ */
+
+.register-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.register-page__form-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  text-align: center;
+}
+
+/* ============================================================================
+   Footer
+   ============================================================================ */
+
+.register-page__footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.register-page__footer-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.register-page__link {
+  color: #3b82f6;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.register-page__link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .register-page__title {
+    font-size: 2rem;
+  }
+
+  .register-page__form-title {
+    font-size: 1.25rem;
+  }
+}

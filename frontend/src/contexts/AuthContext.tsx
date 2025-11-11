@@ -53,9 +53,10 @@
  * ✅ React DevTools muestra el estado
  */
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
+import type { ReactNode } from 'react';
 import { authService } from '../services/authService';
-import type { User, LoginRequest, RegisterRequest, AuthResponse } from '../types';
+import type { User, LoginRequest, RegisterRequest } from '../types';
 
 // ============================================================================
 // TYPES

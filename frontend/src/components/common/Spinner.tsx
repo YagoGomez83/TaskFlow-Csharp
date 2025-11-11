@@ -20,7 +20,6 @@
  * - aria-label → Describe qué está cargando
  */
 
-import React from 'react';
 import './Spinner.css';
 
 /**

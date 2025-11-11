@@ -1,0 +1,109 @@
+/**
+ * LoginPage Styles
+ *
+ * EXPLICACIÓN:
+ * - Centered layout con max-width
+ * - Card elevado para el formulario
+ * - Responsive design
+ */
+
+/* ============================================================================
+   Page Container
+   ============================================================================ */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1rem;
+}
+
+.login-page__container {
+  width: 100%;
+  max-width: 440px;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.login-page__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.login-page__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-page__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================================================
+   Form
+   ============================================================================ */
+
+.login-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-page__form-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a202c;
+  text-align: center;
+}
+
+/* ============================================================================
+   Footer
+   ============================================================================ */
+
+.login-page__footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.login-page__footer-text {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.login-page__link {
+  color: #3b82f6;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.login-page__link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .login-page__title {
+    font-size: 2rem;
+  }
+
+  .login-page__form-title {
+    font-size: 1.25rem;
+  }
+}

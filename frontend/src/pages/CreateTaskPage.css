@@ -1,0 +1,86 @@
+/**
+ * CreateTaskPage Styles
+ *
+ * EXPLICACIÓN:
+ * - Centered layout con max-width
+ * - Breadcrumb navigation
+ * - Spacing consistente
+ */
+
+/* ============================================================================
+   Page Container
+   ============================================================================ */
+
+.create-task-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: #f9fafb;
+}
+
+.create-task-page__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.create-task-page__header {
+  margin-bottom: 2rem;
+}
+
+.create-task-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.create-task-page__breadcrumb-link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.create-task-page__breadcrumb-link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.create-task-page__breadcrumb-separator {
+  color: #9ca3af;
+}
+
+.create-task-page__breadcrumb-current {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.create-task-page__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.create-task-page__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .create-task-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .create-task-page__title {
+    font-size: 1.5rem;
+  }
+}

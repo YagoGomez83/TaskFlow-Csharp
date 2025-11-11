@@ -1,0 +1,54 @@
+/**
+ * Layout Styles
+ *
+ * EXPLICACIÓN:
+ * - Estructura de página completa
+ * - Navbar sticky + main content scrollable
+ * - Background consistente
+ */
+
+/* ============================================================================
+   Layout Container
+   ============================================================================ */
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+}
+
+/* ============================================================================
+   Main Content Area
+   ============================================================================ */
+
+.layout__content {
+  flex: 1;
+  /*
+   * EXPLICACIÓN DE flex: 1:
+   *
+   * Hace que main ocupe todo el espacio disponible:
+   * - Navbar tiene altura fija (64px)
+   * - Main ocupa el resto del viewport
+   * - Footer (si existe) se queda abajo
+   *
+   * Resultado: Footer siempre en el bottom, incluso con poco contenido.
+   */
+}
+
+/* ============================================================================
+   Footer (opcional)
+   ============================================================================ */
+
+.layout__footer {
+  padding: 2rem 1rem;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.layout__footer p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6b7280;
+}

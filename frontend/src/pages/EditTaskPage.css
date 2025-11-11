@@ -1,0 +1,107 @@
+/**
+ * EditTaskPage Styles
+ *
+ * EXPLICACIÓN:
+ * - Identical to CreateTaskPage
+ * - Centered layout con max-width
+ * - Breadcrumb navigation
+ */
+
+/* ============================================================================
+   Page Container
+   ============================================================================ */
+
+.edit-task-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  background-color: #f9fafb;
+}
+
+.edit-task-page__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.edit-task-page__header {
+  margin-bottom: 2rem;
+}
+
+.edit-task-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.edit-task-page__breadcrumb-link {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.edit-task-page__breadcrumb-link:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.edit-task-page__breadcrumb-separator {
+  color: #9ca3af;
+}
+
+.edit-task-page__breadcrumb-current {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.edit-task-page__title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.edit-task-page__subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* ============================================================================
+   Back Button (for error state)
+   ============================================================================ */
+
+.edit-task-page__back-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.edit-task-page__back-button:hover {
+  background-color: #2563eb;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .edit-task-page {
+    padding: 1rem 0.5rem;
+  }
+
+  .edit-task-page__title {
+    font-size: 1.5rem;
+  }
+}

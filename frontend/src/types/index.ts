@@ -93,10 +93,12 @@ export interface User {
  * - Admin: Puede ver/modificar tareas de todos los usuarios
  * - Enum sincronizado con backend (UserRole enum en Domain)
  */
-export enum UserRole {
-  User = 'User',
-  Admin = 'Admin'
-}
+export const UserRole = {
+  User: 'User',
+  Admin: 'Admin'
+} as const;
+
+export type UserRole = typeof UserRole[keyof typeof UserRole];
 
 // ============================================================================
 // TASK TYPES
@@ -163,11 +165,13 @@ export interface UpdateTaskRequest {
  * - Completed: Tarea terminada
  * - Enum sincronizado con backend (TaskStatus enum en Domain)
  */
-export enum TaskStatus {
-  Pending = 'Pending',
-  InProgress = 'InProgress',
-  Completed = 'Completed'
-}
+export const TaskStatus = {
+  Pending: 'Pending',
+  InProgress: 'InProgress',
+  Completed: 'Completed'
+} as const;
+
+export type TaskStatus = typeof TaskStatus[keyof typeof TaskStatus];
 
 /**
  * Prioridades de tarea.
@@ -178,11 +182,13 @@ export enum TaskStatus {
  * - High: Alta prioridad, hacer pronto
  * - Enum sincronizado con backend (TaskPriority enum en Domain)
  */
-export enum TaskPriority {
-  Low = 'Low',
-  Medium = 'Medium',
-  High = 'High'
-}
+export const TaskPriority = {
+  Low: 'Low',
+  Medium: 'Medium',
+  High: 'High'
+} as const;
+
+export type TaskPriority = typeof TaskPriority[keyof typeof TaskPriority];
 
 // ============================================================================
 // PAGINATION TYPES

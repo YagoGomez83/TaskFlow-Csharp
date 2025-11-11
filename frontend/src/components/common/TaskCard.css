@@ -1,0 +1,152 @@
+/**
+ * TaskCard Component Styles
+ *
+ * EXPLICACIÓN DE ESTILOS:
+ *
+ * CSS moderno con:
+ * - BEM naming (task-card__element--modifier)
+ * - Flexbox para layout
+ * - Variables CSS para colores
+ * - Responsive con media queries
+ */
+
+/* ============================================================================
+   Header
+   ============================================================================ */
+
+.task-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.task-card__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a202c;
+  line-height: 1.4;
+}
+
+.task-card__badges {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
+   Badges (Prioridad y Estado)
+   ============================================================================ */
+
+.task-card__badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Priority badges */
+.task-card__badge--high {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.task-card__badge--medium {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.task-card__badge--low {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Status badges */
+.task-card__badge--pending {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.task-card__badge--inprogress {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.task-card__badge--completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+/* ============================================================================
+   Body (Descripción y Fechas)
+   ============================================================================ */
+
+.task-card__description {
+  margin: 0 0 1rem 0;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.task-card__dates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.task-card__date-label {
+  font-weight: 600;
+  color: #374151;
+}
+
+.task-card__date-value {
+  color: #6b7280;
+}
+
+/* Fecha vencida (overdue) */
+.task-card__due-date--overdue {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.task-card__due-date--overdue .task-card__date-label,
+.task-card__due-date--overdue .task-card__date-value {
+  color: #dc2626;
+}
+
+.task-card__overdue-indicator {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+/* ============================================================================
+   Footer (Acciones)
+   ============================================================================ */
+
+.task-card__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ============================================================================
+   Responsive
+   ============================================================================ */
+
+@media (max-width: 640px) {
+  .task-card__title {
+    font-size: 1.125rem;
+  }
+
+  .task-card__actions {
+    flex-direction: column;
+  }
+
+  .task-card__actions button {
+    width: 100%;
+  }
+}
